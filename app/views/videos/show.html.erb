@@ -1,0 +1,33 @@
+<h1>All videos</h1>
+
+
+<table border="3px">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Uploaded By (Name)</th>
+    <th>Uploaded By (Email) </th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <% user.videos.each do |video| %>
+      <tr>
+        <td><%= video.title %></td>
+        <td><%= video.description %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+
+      </tr>
+
+    <% end %>
+
+
+  <% end %>
+  </tbody>
+
+
+</table>
+

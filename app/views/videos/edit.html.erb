@@ -1,0 +1,35 @@
+<h1>Update Video</h1>
+<%= @video.title %><br>
+<%= @video.description %><br>
+<%= @video.user_id %>
+<%#= render "form", video: @video %>
+
+<%= form_with(model: @video, local: true) do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% @user.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :email %><br>
+    <%= form.email_field :email %>
+    <% @user.errors.full_messages_for(:email).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :dob %><br>
+    <%= form.date_select :dob %>
+    <% @user.errors.full_messages_for(:dob).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

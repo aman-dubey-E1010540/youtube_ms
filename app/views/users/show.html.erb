@@ -1,0 +1,45 @@
+<h1>Welcome "<i><%= @user.name %></i>"</h1>
+
+<h1>Following are your videos</h1>
+
+<table border="3px">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Edit</th>
+    <th>Delete</th>
+    <th>Thumbnail</th>
+  </tr>
+  </thead>
+  <tbody>
+  <%# @user.videos.each do |video| %>
+
+
+  <%# end %>
+  <%= render @user.videos %>
+  </tbody>
+
+
+</table>
+
+<h2>Add a Video:</h2>
+<%= form_with model: [ @user, @user.videos.build ] do |form| %>
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </p>
+  <p>
+    <%= form.label :thumbnail %><br>
+    <%= form.file_field :thumbnail %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to "Home", root_path %>

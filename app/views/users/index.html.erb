@@ -1,0 +1,33 @@
+<h1> Users collection</h1>
+
+<table border="3px">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>DOB</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><a href="<%= user_path(user) %>"><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.dob %></td>
+      <td><%= link_to "Edit", edit_user_path(user) %></td>
+      <td><%= link_to "Destroy", user_path(user), data: {
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+
+
+</table>
+
+<h3>Add new User <%= link_to "Click Here", new_user_path  %></h3>
+
+<%= link_to "all videos", user_video_path("all","all") %>

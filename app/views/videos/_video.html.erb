@@ -1,0 +1,17 @@
+<tr>
+  <td><%= video.title %></td>
+  <td><%= video.description %></td>
+  <td><%= link_to "Edit", edit_user_video_path(@user,video) %></td>
+  <td><%= link_to "Destroy", [@user, video], data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure?"
+  } %></td>
+  <td>
+    <% if video.thumbnail.attached? %>
+      <image src="<%= (url_for(video.thumbnail))%>" width="50" height="60">
+    <% else %>
+      <p>No Thumbnail</p>
+
+    <% end %>
+  </td>
+</tr>
